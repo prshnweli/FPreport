@@ -29,14 +29,12 @@ def xl(sc, output):
     writer.sheets['FP'] = worksheet
 
     bl = pd.read_sql_query("DECLARE @SchoolNum AS INT =" + sc + "DECLARE @Gbknum AS INT = 900 " + sqlFile, conn)
-    t1 = pd.read_sql_query("DECLARE @SchoolNum AS INT =" + sc + "DECLARE @Gbknum AS INT = 901 " + sqlFile, conn)
+
     t2 = pd.read_sql_query("DECLARE @SchoolNum AS INT =" + sc + "DECLARE @Gbknum AS INT = 902 " + sqlFile, conn)
     # Write to xlsx
     bl.to_excel(writer,sheet_name='FP',startrow=1 , startcol=8, index = False) #Puts baseline dataframe at I2
     #
-    t1.to_excel(writer,sheet_name='FP',startrow=1 , startcol=17, index = False) #Puts trimester 2 dataframe at R2
-
-    t2.to_excel(writer,sheet_name='FP',startrow=1 , startcol=26, index = False)
+    t2.to_excel(writer,sheet_name='FP',startrow=1 , startcol=17, index = False) #Puts trimester 2 dataframe at R2
 
 
     # Write headers for xlsx
@@ -49,8 +47,7 @@ def xl(sc, output):
     worksheet.write_string('G2', "5")
 
     worksheet.write_string('I1', "Baseline F&P")
-    worksheet.write_string('R1', "Trimester 1 F&P")
-    worksheet.write_string('AA1', "Trimester 1 F&P")
+    worksheet.write_string('R1', "Trimester 2 F&P")
 
     # Column details
     worksheet.write_string('A2', "Grade")
@@ -151,20 +148,20 @@ def goog(sc, sheet):
 
 
 
-# xl("2", 'FP/ElToro.xlsx')
+xl("2", 'FP/ElToro.xlsx')
 xl("6", 'FP/LosPaseos.xlsx')
-# xl("8", 'FP/Nordstrom.xlsx')
-# xl("9", 'FP/Paradise.xlsx')
-# xl("10", 'FP/SMG.xlsx')
-# xl("11", 'FP/Walsh.xlsx')
-# xl("12", 'FP/Barrett.xlsx')
-# xl("15", 'FP/JAMM.xlsx')
+xl("8", 'FP/Nordstrom.xlsx')
+xl("9", 'FP/Paradise.xlsx')
+xl("10", 'FP/SMG.xlsx')
+xl("11", 'FP/Walsh.xlsx')
+xl("12", 'FP/Barrett.xlsx')
+xl("15", 'FP/JAMM.xlsx')
 
-# goog("2",'El Toro FP')
-# goog("6", 'Los Paseos FP')
-# goog("8", 'Nordstrom FP')
-# goog("9", 'Paradise FP')
-# goog("10", 'SMG FP')
-# goog("11", 'Walsh FP')
-# goog("12", 'Barrett FP')
-# goog("15", 'JAMM FP')
+goog("2",'El Toro FP')
+goog("6", 'Los Paseos FP')
+goog("8", 'Nordstrom FP')
+goog("9", 'Paradise FP')
+goog("10", 'SMG FP')
+goog("11", 'Walsh FP')
+goog("12", 'Barrett FP')
+goog("15", 'JAMM FP')
