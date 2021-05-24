@@ -1,0 +1,7 @@
+*.csv
+*.xlsx
+*.zip
+config.py
+*.json
+keys/
+_pycache_/
